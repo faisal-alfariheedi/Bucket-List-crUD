@@ -16,6 +16,7 @@
 		3AF8D087275CFE6A0040A555 /* Bucket_List_crUDTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D086275CFE6A0040A555 /* Bucket_List_crUDTests.swift */; };
 		3AF8D091275CFE6A0040A555 /* Bucket_List_crUDUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D090275CFE6A0040A555 /* Bucket_List_crUDUITests.swift */; };
 		3AF8D093275CFE6A0040A555 /* Bucket_List_crUDUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D092275CFE6A0040A555 /* Bucket_List_crUDUITestsLaunchTests.swift */; };
+		3AF8D0A0275D17E50040A555 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D09F275D17E50040A555 /* TableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3AF8D08C275CFE6A0040A555 /* Bucket List crUDUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bucket List crUDUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF8D090275CFE6A0040A555 /* Bucket_List_crUDUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bucket_List_crUDUITests.swift; sourceTree = "<group>"; };
 		3AF8D092275CFE6A0040A555 /* Bucket_List_crUDUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bucket_List_crUDUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		3AF8D09F275D17E50040A555 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				3AF8D06F275CFE680040A555 /* AppDelegate.swift */,
 				3AF8D071275CFE680040A555 /* SceneDelegate.swift */,
 				3AF8D073275CFE680040A555 /* ViewController.swift */,
+				3AF8D09F275D17E50040A555 /* TableViewController.swift */,
 				3AF8D075275CFE680040A555 /* Main.storyboard */,
 				3AF8D078275CFE6A0040A555 /* Assets.xcassets */,
 				3AF8D07A275CFE6A0040A555 /* LaunchScreen.storyboard */,
@@ -261,6 +264,7 @@
 				3AF8D074275CFE680040A555 /* ViewController.swift in Sources */,
 				3AF8D070275CFE680040A555 /* AppDelegate.swift in Sources */,
 				3AF8D072275CFE680040A555 /* SceneDelegate.swift in Sources */,
+				3AF8D0A0275D17E50040A555 /* TableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
