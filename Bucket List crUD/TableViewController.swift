@@ -26,13 +26,13 @@ class TableViewController: UITableViewController,cans {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if(segue.identifier == "add"){
-        let nv = segue.destination as! UINavigationController
-        let seg = nv.topViewController! as! ViewController
-        seg.owner=self
-        seg.dele=self
-            seg.ed=items.count
-        }else if (segue.identifier == "edit"){
+        if(sender is UIBarButtonItem){
+            let nv = segue.destination as! UINavigationController
+            let seg = nv.topViewController! as! ViewController
+            seg.owner=self
+            seg.dele=self
+                seg.ed=items.count
+        }else if(sender is Int){
             let nv = segue.destination as! UINavigationController
             let seg = nv.topViewController! as! ViewController
             seg.owner=self
@@ -41,6 +41,7 @@ class TableViewController: UITableViewController,cans {
             seg.edit=true
             seg.tex = items[sender as! Int]
         }
+        
     }
     func cancel(by cont: UIViewController) {
         table.reloadData()
@@ -58,7 +59,7 @@ class TableViewController: UITableViewController,cans {
 //
 //    }
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        performSegue(withIdentifier: "edit", sender: indexPath.row )
+        performSegue(withIdentifier: "", sender: indexPath.row )
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
