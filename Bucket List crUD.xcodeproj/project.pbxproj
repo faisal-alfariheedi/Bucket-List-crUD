@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AF7475F275E0F5100E7D8E8 /* BucketList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3AF7475D275E0F5100E7D8E8 /* BucketList.xcdatamodeld */; };
 		3AF8D070275CFE680040A555 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D06F275CFE680040A555 /* AppDelegate.swift */; };
 		3AF8D072275CFE680040A555 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D071275CFE680040A555 /* SceneDelegate.swift */; };
 		3AF8D074275CFE680040A555 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF8D073275CFE680040A555 /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3AF7475E275E0F5100E7D8E8 /* BucketList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BucketList.xcdatamodel; sourceTree = "<group>"; };
 		3AF8D06C275CFE680040A555 /* Bucket List crUD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bucket List crUD.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AF8D06F275CFE680040A555 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3AF8D071275CFE680040A555 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				3AF8D06F275CFE680040A555 /* AppDelegate.swift */,
+				3AF7475D275E0F5100E7D8E8 /* BucketList.xcdatamodeld */,
 				3AF8D071275CFE680040A555 /* SceneDelegate.swift */,
 				3AF8D073275CFE680040A555 /* ViewController.swift */,
 				3AF8D09F275D17E50040A555 /* TableViewController.swift */,
@@ -263,6 +266,7 @@
 			files = (
 				3AF8D074275CFE680040A555 /* ViewController.swift in Sources */,
 				3AF8D070275CFE680040A555 /* AppDelegate.swift in Sources */,
+				3AF7475F275E0F5100E7D8E8 /* BucketList.xcdatamodeld in Sources */,
 				3AF8D072275CFE680040A555 /* SceneDelegate.swift in Sources */,
 				3AF8D0A0275D17E50040A555 /* TableViewController.swift in Sources */,
 			);
@@ -622,6 +626,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3AF7475D275E0F5100E7D8E8 /* BucketList.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3AF7475E275E0F5100E7D8E8 /* BucketList.xcdatamodel */,
+			);
+			currentVersion = 3AF7475E275E0F5100E7D8E8 /* BucketList.xcdatamodel */;
+			path = BucketList.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3AF8D064275CFE680040A555 /* Project object */;
 }

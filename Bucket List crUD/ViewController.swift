@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreData
 
 protocol cans:class{
     func cancel(by cont:UIViewController)
@@ -29,13 +30,22 @@ class ViewController: UIViewController {
     @IBAction func additem(_ sender: UIBarButtonItem) {
         if(add.text!.isEmpty){}else{
             if(edit){
-                (owner as! TableViewController).items[ed]=String(add.text!)
+                (owner as! TableViewController).items[ed].text = String(add.text!)
                 edit=false
             }else{
-            (owner as! TableViewController).items.append(String(add.text!))
+                let thing = NSEntityDescription.insertNewObject(forEntityName: "Bucketitems", into: (owner as! TableViewController).objectmanage) as! Bucketitems
+                thing.text = String(add.text!)
+                if (owner as! TableViewController).objectmanage.hasChanges {
+                    do {
+                        try (owner as! TableViewController).objectmanage.save()
+                        print("Success")
+                    } catch {
+                        print("\(error)")
+                    }
+                }
+//            (owner as! TableViewController).items.append(String(add.text!))
             }
                 dele?.cancel(by: self)
-            print("shit")
 //            dismiss(animated: true, completion: nil)
         }
     }

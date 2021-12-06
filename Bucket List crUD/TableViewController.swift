@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import CoreData
 
 class TableViewController: UITableViewController,cans {
     
     
     @IBOutlet var table: UITableView!
     
-    
-    var items = ["Sky diving", "Live in Hawaii"]
+    var objectmanage=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var items = [Bucketitems]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        getall()
         table.dataSource=self
         table.delegate=self
 
@@ -39,13 +41,25 @@ class TableViewController: UITableViewController,cans {
             seg.dele=self
             seg.ed=sender as! Int
             seg.edit=true
-            seg.tex = items[sender as! Int]
+            seg.tex = items[sender as! Int].text!
         }
         
     }
     func cancel(by cont: UIViewController) {
+        getall()
         table.reloadData()
         dismiss(animated: true, completion: nil)
+    }
+    
+    func getall(){
+        let req=NSFetchRequest<NSFetchRequestResult>(entityName: "Bucketitems")
+        do{
+            let fet = try objectmanage.fetch(req)
+            items = fet as! [Bucketitems]
+            
+        }catch{
+            print(error)
+        }
     }
     
 
@@ -76,7 +90,7 @@ class TableViewController: UITableViewController,cans {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = items[indexPath.row]
+        cell.textLabel?.text = items[indexPath.row].text!
         // Configure the cell...
 
         return cell
