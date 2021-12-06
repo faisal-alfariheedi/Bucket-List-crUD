@@ -82,7 +82,17 @@ class TableViewController: UITableViewController,cans {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        items.remove(at: indexPath.row)
+//        items.remove(at: indexPath.row)
+        objectmanage.delete(items[indexPath.row])
+        if objectmanage.hasChanges {
+            do {
+                try objectmanage.save()
+                print("Success")
+            } catch {
+                print("\(error)")
+            }
+        }
+        getall()
         table.reloadData()
     }
 
