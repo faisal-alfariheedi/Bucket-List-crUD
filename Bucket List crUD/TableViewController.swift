@@ -14,7 +14,8 @@ class TableViewController: UITableViewController,cans {
     @IBOutlet var table: UITableView!
     
     var objectmanage=(UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    var items = [Bucketitems]()
+    var items = [bucketitemapi]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getall()
@@ -33,7 +34,8 @@ class TableViewController: UITableViewController,cans {
             let seg = nv.topViewController! as! ViewController
             seg.owner=self
             seg.dele=self
-                seg.ed=items.count
+            seg.ed=items.count
+            seg.last=items.last!.id
         }else if(sender is Int){
             let nv = segue.destination as! UINavigationController
             let seg = nv.topViewController! as! ViewController
@@ -41,7 +43,8 @@ class TableViewController: UITableViewController,cans {
             seg.dele=self
             seg.ed=sender as! Int
             seg.edit=true
-            seg.tex = items[sender as! Int].text!
+            seg.last=items.last!.id
+            seg.tex = items[sender as! Int].text
         }
         
     }
@@ -52,14 +55,27 @@ class TableViewController: UITableViewController,cans {
     }
     
     func getall(){
-        let req=NSFetchRequest<NSFetchRequestResult>(entityName: "Bucketitems")
+        /*let req=NSFetchRequest<NSFetchRequestResult>(entityName: "Bucketitems")
         do{
             let fet = try objectmanage.fetch(req)
             items = fet as! [Bucketitems]
             
         }catch{
             print(error)
-        }
+        }*/
+        BucketAPI.getAll(completionHandler: {
+            data, response, error in
+                        
+                        do{
+                            self.items = try JSONDecoder().decode([bucketitemapi].self, from: data!)
+                            DispatchQueue.main.async {
+                                self.table.reloadData()
+                            }
+                        }catch{
+                            print(error)
+                        }
+                    })
+        
     }
     
 
@@ -82,7 +98,7 @@ class TableViewController: UITableViewController,cans {
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        items.remove(at: indexPath.row)
+        /*
         objectmanage.delete(items[indexPath.row])
         if objectmanage.hasChanges {
             do {
@@ -93,63 +109,32 @@ class TableViewController: UITableViewController,cans {
             }
         }
         getall()
-        table.reloadData()
+        table.reloadData()*/
+        
+        BucketAPI.delete(index: items[indexPath.row].id , completionHandler: {
+            data, response, error in
+                        do{
+                            
+                            print("good")
+                            self.getall()
+                        }catch{
+                            print(error)
+                        }
+        })
+        
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = items[indexPath.row].text!
+        cell.textLabel?.text = items[indexPath.row].text
         // Configure the cell...
 
         return cell
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
